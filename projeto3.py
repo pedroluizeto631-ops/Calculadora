@@ -1,34 +1,45 @@
+RED = "\033[31m"
+GREEN = "\033[32m"
+YELLOW = "\033[33m"
+CYAN = "\033[36m"
+RESET = "\033[0m"
+
 while True:
-    print("CALCULADORA SIMPLES")
-    print('-=-=-=-=-=-=-=-=-=-=-=-=-')
+    print(CYAN + "=== CALCULADORA COLORIDA v1.2 ===" + RESET)
     print("[1] Somar")
     print("[2] Subtrair")
     print("[3] Multiplicar")
     print("[4] Dividir")
-    print('-=-=-=-=-=-=-=-=-=-=-=-=-')
-    op = int(input("Escolha -> "))
-    print('=-=-=-=-')
-    n1 = float(input("Primeiro número: "))
-    n2 = float(input("Segundo número: "))
-    print('-=-=-=-=-=-=')
-    if op == 1:
-        print("Resultado:", n1 + n2)
-    elif op == 2:
-        print("Resultado:", n1 - n2)
-    elif op == 3:
-        print("Resultado:", n1 * n2)
-    elif op == 4:
-        if n2 == 0:
-            print("Não dá pra dividir por zero!")
-        else:
-            print("Resultado:", n1 / n2)
-    else:
-        print("Opção inválida!")
+    print("[5] Sair")
+    op = input("Escolha -> ")
 
-    continuar = input("Quer continuar? [S/N] -> ").upper()
-
-    if continuar != "S":  # se NÃO for S, sai
-        print("Encerrando...")
+    if op == "5":
+        print(YELLOW + "Encerrando..." + RESET)
         break
 
-    print()  # só pra dar uma espaçada
+    n1 = float(input("Número 1: "))
+    n2 = float(input("Número 2: "))
+
+    print(GREEN + "Resultado: ", end="")
+
+    if op == "1":
+        print(n1 + n2)
+    elif op == "2":
+        print(n1 - n2)
+    elif op == "3":
+        print(n1 * n2)
+    elif op == "4":
+        if n2 == 0:
+            print(RED + "Erro: divisão por zero!" + RESET)
+        else:
+            print(n1 / n2)
+    else:
+        print(RED + "Opção inválida!" + RESET)
+
+    print(RESET)
+    continuar = input("Continuar? [S/N] -> ").strip().upper()
+    if continuar != "S":
+        break
+
+    print()
+
